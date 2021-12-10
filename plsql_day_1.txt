@@ -1,0 +1,137 @@
+SQL> 
+SQL> 
+SQL> --write a program to display welcome message to the PLSQL?
+SQL> 
+SQL> BEGIN
+  2  dbms_output.put_line('Hi , Welcome to PLSQL Programming');
+  3  END;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> -- By default client application not enabled to receive output from the server
+SQL> 
+SQL> -- we should enable client application as follows
+SQL> 
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> BEGIN
+  2  dbms_output.put_line('Hi, Welcome to PLSQL Programming');
+  3  END;
+  4  /
+Hi, Welcome to PLSQL Programming                                                                                                                                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> -- write a program to display dept name of dept no 10 ?
+SQL> 
+SQL> DECLARE
+  2  vdid   number(2):=10;
+  3  vdname  varchar2(20);
+  4  BEGIN
+  5  select dname INTO vdname from dept where deptno=vdid;
+  6  dbms_output.put_line(' Given deptno:  ');
+  7  dbms_output.put_line(vdid);
+  8  dbms_output.put_line(' Department name:  ');
+  9  dbms_output.put_line(vdname);
+ 10  END;
+ 11  /
+Given deptno:                                                                                                                                                                                           
+10                                                                                                                                                                                                      
+Department name:                                                                                                                                                                                        
+ACCOUNTING                                                                                                                                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> --write a program to display empname, salary and designition of empid 7788 ?
+SQL> 
+SQL> DECLARE
+  2  vempid  number(4):=7788;
+  3  vename  varchar2(20);
+  4  vsalary  number(5);
+  5  vdesg   varchar2(20);
+  6  BEGIN
+  7  select ename,sal,job INTO vename,vsalary,vdesg
+  8  from emp where empno=vempid;
+  9  dbms_output.put_line(' Given empid:  ');
+ 10  dbms_output.put_line(vempid);
+ 11  dbms_output.put_line('Emp Name:  ');
+ 12  dbms_output.put_line(vename);
+ 13  dbms_output.put_line('Salary:  ');
+ 14  dbms_output.put_line(vsalary);
+ 15  dbms_output.put_line('Working As :  ');
+ 16  dbms_output.put_line(vdesg);
+ 17  END;
+ 18  /
+Given empid:                                                                                                                                                                                            
+7788                                                                                                                                                                                                    
+Emp Name:                                                                                                                                                                                               
+SCOTT                                                                                                                                                                                                   
+Salary:                                                                                                                                                                                                 
+3000                                                                                                                                                                                                    
+Working As :                                                                                                                                                                                            
+ANALYST                                                                                                                                                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  vempid  number(4):=7788;
+  3  vename  varchar2(20);
+  4  vsalary  number(5);
+  5  vdesg   varchar2(20);
+  6  BEGIN
+  7  select ename,sal,job INTO vename,vsalary,vdesg
+  8  from emp where empno=vempid;
+  9  dbms_output.put_line(' Given empid:  '||vempid);
+ 10  dbms_output.put_line(vempid);
+ 11  dbms_output.put_line('Emp Name:  '||vename);
+ 12  dbms_output.put_line(vename);
+ 13  dbms_output.put_line('Salary:  '||vsalary);
+ 14  dbms_output.put_line(vsalary);
+ 15  dbms_output.put_line('Working As :  '||vdesg);
+ 16  dbms_output.put_line(vdesg);
+ 17* END;
+SQL> /
+Given empid:  7788                                                                                                                                                                                      
+7788                                                                                                                                                                                                    
+Emp Name:  SCOTT                                                                                                                                                                                        
+SCOTT                                                                                                                                                                                                   
+Salary:  3000                                                                                                                                                                                           
+3000                                                                                                                                                                                                    
+Working As :  ANALYST                                                                                                                                                                                   
+ANALYST                                                                                                                                                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  DECLARE
+  2  vempid  number(4):=7788;
+  3  vename  varchar2(20);
+  4  vsalary  number(5);
+  5  vdesg   varchar2(20);
+  6  BEGIN
+  7  select ename,sal,job INTO vename,vsalary,vdesg
+  8  from emp where empno=vempid;
+  9  dbms_output.put_line(' Given empid:  '||vempid);
+ 10  dbms_output.put_line('Emp Name:  '||vename);
+ 11  ------dbms_output.put_line(vename);
+ 12  dbms_output.put_line('Salary:  '||vsalary);
+ 13  ------dbms_output.put_line(vsalary);
+ 14  dbms_output.put_line('Working As :  '||vdesg);
+ 15  ------dbms_output.put_line(vdesg);
+ 16* END;
+SQL> /
+Given empid:  7788                                                                                                                                                                                      
+Emp Name:  SCOTT                                                                                                                                                                                        
+Salary:  3000                                                                                                                                                                                           
+Working As :  ANALYST                                                                                                                                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> exit
